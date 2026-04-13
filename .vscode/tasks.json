@@ -1,0 +1,70 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "g++ build",
+            "command": "D:\\MInGW\\mingw64\\bin\\g++.exe",
+            "args": [
+                "-g",
+                "-Wall",
+                "-Wextra",
+                "-Wpedantic",
+                "${file}",
+                "-o",
+                "${fileDirname}\\${fileBasenameNoExtension}.exe",
+                "-fexec-charset=GBK"
+            ],
+            "options": {
+                "cwd": "${fileDirname}",
+                "shell": {
+                    "executable": "powershell.exe"
+                }
+            },
+            "problemMatcher": ["$gcc"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "type": "shell",
+            "label": "g++ build release",
+            "command": "D:\\MInGW\\mingw64\\bin\\g++.exe",
+            "args": [
+                "-O2",
+                "-Wall",
+                "-Wextra",
+                "-Wpedantic",
+                "${file}",
+                "-o",
+                "${fileDirname}\\${fileBasenameNoExtension}_release.exe",
+                "-fexec-charset=GBK"
+            ],
+            "options": {
+                "cwd": "${fileDirname}",
+                "shell": {
+                    "executable": "powershell.exe"
+                }
+            },
+            "problemMatcher": ["$gcc"],
+            "group": "build"
+        },
+        {
+            "type": "shell",
+            "label": "clean",
+            "command": "Remove-Item",
+            "args": [
+                "${fileDirname}\\*.exe",
+                "${fileDirname}\\*.o"
+            ],
+            "options": {
+                "cwd": "${fileDirname}",
+                "shell": {
+                    "executable": "powershell.exe"
+                }
+            },
+            "problemMatcher": []
+        }
+    ]
+}
